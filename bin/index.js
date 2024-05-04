@@ -8,6 +8,7 @@ import { list } from '../src/commands/list.js';
 import { add } from '../src/commands/add.js';
 import { edit } from '../src/commands/edit.js';
 import { del } from '../src/commands/del.js';
+import { cls } from '../src/commands/cls.js'; 
 import { exit } from '../src/commands/exit.js';
 
 const choices = {
@@ -15,6 +16,7 @@ const choices = {
   Adicionar: add,
   Editar: edit,
   Deletar: del,
+  Limpar: cls,
   Sair: exit
 };
 
