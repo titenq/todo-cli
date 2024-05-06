@@ -8,16 +8,23 @@ import { list } from '../src/commands/list.js';
 import { add } from '../src/commands/add.js';
 import { edit } from '../src/commands/edit.js';
 import { del } from '../src/commands/del.js';
-import { cls } from '../src/commands/cls.js'; 
+import { cls } from '../src/commands/cls.js';
+import { language } from '../src/commands/language.js';
 import { exit } from '../src/commands/exit.js';
+import { envConfig } from '../src/utils/envConfig.js';
+import { strings } from '../src/utils/strings.js';
+
+const langCli = envConfig.LANG_CLI || 'en';
+console.log(langCli);
 
 const choices = {
-  Listar: list,
-  Adicionar: add,
-  Editar: edit,
-  Deletar: del,
-  Limpar: cls,
-  Sair: exit
+  [strings[langCli]['list']]: list,
+  [strings[langCli]['add']]: add,
+  [strings[langCli]['edit']]: edit,
+  [strings[langCli]['delete']]: del,
+  [strings[langCli]['clear']]: cls,
+  [strings[langCli]['language']]: language,
+  [strings[langCli]['exit']]: exit
 };
 
 console.log(
@@ -37,13 +44,13 @@ program.action(async () => {
       {
         type: 'rawlist',
         name: 'choice',
-        message: 'Escolha uma das opções:',
+        message: strings[langCli]['chooseOption'],
         choices: Object.keys(choices),
       },
     ]);
   
   const result = await input;
-  const choice = await choices[result.choice];
+  const choice = choices[result.choice];
   
   await choice();
 

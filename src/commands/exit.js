@@ -1,6 +1,11 @@
 import chalk from 'chalk';
 
-export const exit = async () => {
-  console.log(chalk.redBright('Saindo da aplicação...'));
+import { envConfig } from '../utils/envConfig.js';
+import { strings } from '../utils/strings.js';
+
+export const exit = () => {
+  const langCli = envConfig.LANG_CLI || 'en';
+
+  console.log(chalk.redBright(strings[langCli]['exiting']));
   process.exit(0);
 };

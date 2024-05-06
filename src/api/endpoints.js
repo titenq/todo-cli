@@ -1,6 +1,11 @@
+import dotenv from 'dotenv';
 import axios from 'axios';
 
-const baseUrl = 'https://todo-api-er5e.onrender.com/todo';
+import { envConfig } from '../utils/envConfig.js';
+
+dotenv.config();
+
+const baseUrl = envConfig.BASE_URL;
 
 const getTodos = async () => {
   try {

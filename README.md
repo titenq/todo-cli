@@ -4,7 +4,7 @@
 
 
 # TODO CLI
-![](https://github.com/titenq/cartoon-memory-game/blob/master/img/tdo01.png?raw=true)
+![JrxEL1S.png](https://iili.io/JrxEL1S.png)
 Aplicação CLI de gerenciamento de tarefas diretamente no terminal.
 
 ## Pré-requisitos
