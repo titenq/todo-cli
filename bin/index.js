@@ -28,7 +28,7 @@ const choices = {
 };
 
 console.log(
-  chalk.bold.blueBright(figlet.textSync('TODO CLI', {
+  chalk.bold.cyanBright(figlet.textSync('TODO CLI', {
     font: 'Speed',
     horizontalLayout: 'default',
     verticalLayout: 'default',
