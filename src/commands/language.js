@@ -2,30 +2,48 @@ import readline from 'node:readline';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { exec } from 'node:child_process';
 
 import dotenv from 'dotenv';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 
 import { strings } from '../utils/strings.js';
-import { envConfig } from '../utils/envConfig.js';
 
 dotenv.config();
-
-const oldLangCli = envConfig.LANG_CLI || 'en';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const envFilePath = path.resolve(__dirname, '..', '..', '.env');
+const envConfig = dotenv.parse(fs.readFileSync(envFilePath));
+const oldLangCli = envConfig.LANG_CLI || 'en';
 
-const languages = {
-  'English': 'en',
-  'Português': 'pt-br',
-  'Español': 'es'
+const restartApp = () => {
+  // Comando para fechar e reiniciar a aplicação
+  const command = path.resolve(__dirname, '..', 'utils', 'restart.sh');
+
+  // Executa o comando
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Erro ao reiniciar a aplicação: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.error(`Erro ao reiniciar a aplicação: ${stderr}`);
+      return;
+    }
+    console.log(`Aplicação reiniciada com sucesso: ${stdout}`);
+  });
 };
 
 export const language = async () => {
   try {
+    const languages = {
+      'English': 'en',
+      'Português': 'pt-br',
+      'Español': 'es'
+    };
+
     const input = await inquirer
       .prompt([
         {
@@ -40,6 +58,7 @@ export const language = async () => {
     const choice = await languages[result.language];
 
     envConfig.LANG_CLI = choice;
+    global.langGlobal = choice;
 
     fs.writeFileSync(envFilePath,
       Object
@@ -107,6 +126,8 @@ export const language = async () => {
     });
 
     console.log(chalk.bold.greenBright(`\n${strings[choice]['currentLanguage']}: ${choice}\n`));
+
+    restartApp();
   } catch (error) {
     console.error(error);
   }

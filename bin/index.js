@@ -15,7 +15,7 @@ import { envConfig } from '../src/utils/envConfig.js';
 import { strings } from '../src/utils/strings.js';
 
 const langCli = envConfig.LANG_CLI || 'en';
-console.log(langCli);
+global.langGlobal = langCli;
 
 const choices = {
   [strings[langCli]['list']]: list,
