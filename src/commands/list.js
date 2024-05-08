@@ -11,7 +11,7 @@ export const list = async () => {
   const response = await getTodos();
 
   response.forEach((item, i) => {
-    console.log(chalk.yellowBright(`${i + 1}: ${item.content} - ${formatDate(item.createdAt, langCli)}`));
+    console.log(chalk.yellowBright(`${chalk.magentaBright(`${ i + 1}:`)} ${item.content} ${chalk.gray([`${ formatDate(item.createdAt, langCli)}`])}`));
   });
   
   console.log();
