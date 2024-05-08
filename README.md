@@ -27,6 +27,11 @@ npm install
 npm link
 ```
 
+## Para definir o idioma
+```bash
+npm run lang -- --lang="pt-br"
+```
+
 ## Para usar
 ```bash
 todo
@@ -36,34 +41,5 @@ todo
 ```bash
 npm uninstall --global todo
 ```
-
-#### Para editar a mensagem Answer no rawlist edite o arquivo
-`node_modules/inquirer/lib/prompts/rawlist.js`
-
-`linha 101`
-```javascript
-message += '\n\n  Answer: ';
-message += '\n\n  Digite um número: ';
-```
-
-`linha 141`
-```javascript
-onError() {
-  this.render('Invalid...');
-}
-onError() {
-  this.render('Número inválido');
-}
-```
-
-#### Para editar a mensagem (y/N) no confirm edite o arquivo
-`node_modules/inquirer/lib/prompts/confirm.js`
-
-`linha 30`
-```javascript
-this.opt.default = rawDefault ? 'Y/n' : 'y/N';
-this.opt.default = rawDefault ? 's/n' : 'S/N';
-```
-
 ## License
 Distribuído sob a licença MIT. Consulte `LICENSE.txt` para obter mais informações.

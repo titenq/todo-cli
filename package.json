@@ -8,7 +8,7 @@
   },
   "type": "module",
   "scripts": {
-    
+    "lang": "node ./src/utils/lang.js"
   },
   "keywords": [],
   "author": "",

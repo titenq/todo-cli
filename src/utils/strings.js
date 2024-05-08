@@ -26,6 +26,7 @@ export const strings = {
     addTask: 'Enter the task:',
     noTask: 'You have not entered a task',
     addSuccess: 'Task added successfully',
+    langIsNotDefined: 'Language is not defined'
   },
   'pt-br': {
     list: 'Listar',
@@ -54,6 +55,7 @@ export const strings = {
     addTask: 'Digite a tarefa:',
     noTask: 'Você não digitou uma tarefa',
     addSuccess: 'Tarefa adicionada com sucesso',
+    langIsNotDefined: 'Linguagem não definida'
   },
   'es': {
     list: 'Lista',
@@ -82,5 +84,6 @@ export const strings = {
     addTask: 'Ingrese la tarea:',
     noTask: 'No has ingresado una tarea',
     addSuccess: 'Tarea agregada exitosamente',
+    langIsNotDefined: 'El idioma no está definido'
   },
 };

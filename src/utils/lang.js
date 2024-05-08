@@ -24,7 +24,7 @@ const lang = () => {
     const langArgs = args.find(arg => arg.startsWith('--lang='));
     
     if (!langArgs) {
-      console.log(chalk.bold.redBright(strings['en'].langIsNotDefine));
+      console.log(chalk.bold.redBright(strings['en'].langIsNotDefined));
 
       return;
     }
@@ -32,7 +32,8 @@ const lang = () => {
     const langArg = langArgs.split('=')[1];
 
     if (!languages.includes(langArg)) {
-      console.log(chalk.bold.redBright('invalid lang'));
+      console.log(chalk.bold.redBright('Invalid language'));
+      console.log(chalk.bold.greenBright('Available languages: "en", "pt-br", "es"'));
 
       return;
     }
@@ -107,7 +108,7 @@ const lang = () => {
       fs.writeFileSync(confirmPath, fileContentConfirm, 'utf8');
     });
 
-    console.log(chalk.bold.greenBright('\nLinguagem atual: ptbr\n'));
+    console.log(chalk.bold.greenBright(`\nLinguagem atual: ${langArg}\n`));
   } catch (error) {
     console.error(error);
   }

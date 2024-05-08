@@ -9,7 +9,6 @@ import { add } from '../src/commands/add.js';
 import { edit } from '../src/commands/edit.js';
 import { del } from '../src/commands/del.js';
 import { cls } from '../src/commands/cls.js';
-import { language } from '../src/commands/language.js';
 import { exit } from '../src/commands/exit.js';
 import { envConfig } from '../src/utils/envConfig.js';
 import { strings } from '../src/utils/strings.js';
@@ -23,7 +22,6 @@ const choices = {
   [strings[langCli]['edit']]: edit,
   [strings[langCli]['delete']]: del,
   [strings[langCli]['clear']]: cls,
-  [strings[langCli]['language']]: language,
   [strings[langCli]['exit']]: exit
 };
 
