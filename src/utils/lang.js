@@ -20,6 +20,7 @@ const languages = [
 
 const lang = () => {
   try {
+    const oldLang = process.env.LANG_CLI || 'en';
     const args = process.argv.slice(2);
     const langArgs = args.find(arg => arg.startsWith('--lang='));
     
@@ -50,14 +51,21 @@ const lang = () => {
         .join('\n')
     );
 
-    const searchRawlistLine1 = "      message += '\\n  Answer: ';";
-    const replaceRawlistLine1 = "      message += '\\n\\n  Digite um número: ';";
+    let searchRawlistLine1;
+    let replaceRawlistLine1;
+    let searchRawlistLine2;
+    let replaceRawlistLine2;
+    let searchConfirmLine;
+    let replaceConfirmLine;
 
-    const searchRawlistLine2 = "    this.render('Please enter a valid index');";
-    const replaceRawlistLine2 = "    this.render('Número inválido');";
+    searchRawlistLine1 = strings[oldLang]['answer'];
+    replaceRawlistLine1 = strings[langArg]['answer'];
 
-    const searchConfirmLine = "    this.opt.default = rawDefault ? 'Y/n' : 'y/N';";
-    const replaceConfirmLine = "    this.opt.default = rawDefault ? 's/n' : 'S/N';";
+    searchRawlistLine2 = strings[oldLang]['validIndex'];
+    replaceRawlistLine2 = strings[langArg]['validIndex'];
+
+    searchConfirmLine = strings[oldLang]['yesNo'];
+    replaceConfirmLine = strings[oldLang]['yesNo'];
 
     const rawlistPath = path.resolve(__dirname, '..', '..', 'node_modules', 'inquirer', 'lib', 'prompts', 'rawlist.js');
     const confirmPath = path.resolve(__dirname, '..', '..', 'node_modules', 'inquirer', 'lib', 'prompts', 'confirm.js');
