@@ -5,7 +5,7 @@ import { envConfig } from '../utils/envConfig.js';
 
 dotenv.config();
 
-const baseUrl = envConfig.BASE_URL;
+const baseUrl = envConfig.BASE_URL || 'https://todo-demo-7qeb.onrender.com/todo';
 
 const getTodos = async () => {
   try {
